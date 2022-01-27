@@ -15,6 +15,7 @@ end
 
 def get_id_datas(id_urls)
   datasTab = []
+  output = []
 
 0..(id_urls.length).times do |i|
   card = id_urls[i]
@@ -26,9 +27,9 @@ def get_id_datas(id_urls)
     # puts firstName
     lastName = fullname.split(".")[1]
     # puts lastName
-  
-    #puts mail.text
+
   end
+  output.push(h)
   #return datasTab  
 end
 
