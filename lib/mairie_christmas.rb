@@ -17,6 +17,7 @@ def get_townhall_email(townhall_urls)
   mailsTab = []
 
 0..(townhall_urls.length).times do |i|
+  print "*"
   site = townhall_urls[i]
   page = Nokogiri::HTML(URI.open(site))
   mail = page.xpath('/html/body/div/main/section[2]/div/table/tbody/tr[4]/td[2]')
@@ -25,9 +26,19 @@ def get_townhall_email(townhall_urls)
   return mailsTab  
 end
 
+def output(townhall_urls, townhall_email)
+output=[]
+  0...(townhall_urls.length).times do |i|
+    h = Hash.new
+    h[townhall_urls[i]] = townhall_email[i]
+    output.push(h)
+  end
+  puts output
+end
 
 def perform
-  puts get_townhall_email(get_townhall_urls)
+  #get_townhall_email(get_townhall_urls)
+  output(get_townhall_email(get_townhall_urls), get_townhall_urls)
 end
 
 perform
